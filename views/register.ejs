@@ -1,16 +1,16 @@
 <%- include('header'); %>
     <body class="text-center">
-        <form class="form-signin">
+        <form class="form-signin" method="POST">
             <img class="mb-4" src="img/passport.svg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Complete the register</h1>
             <label for="text" class="sr-only">Complete Name</label>
             <input type="text" id="userCompName" class="form-control" placeholder="Complete Name" required autofocus>
             <label for="text" class="sr-only">Username</label>
-            <input type="text" id="userName" class="form-control" placeholder="Username" required autofocus>
+            <input type="text" id="userName" name="username"  class="form-control" placeholder="Username" required autofocus>
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" >
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" >
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
         </form>
