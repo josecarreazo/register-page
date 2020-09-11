@@ -53,6 +53,14 @@ app.get("/register", function (req, res) {
   res.render("register");
 });
 
+app.get("/main",function(req,res){
+  if (req.isAuthenticated()) {
+    res.render("dashboard");
+  } else {
+    res.redirect("/login");
+  }
+})
+
 app.post("/", function (req, res) {
   let item = Object.keys(req.body)[0];
   res.redirect("/" + item);
@@ -76,3 +84,27 @@ app.post("/register", function (req, res) {
   );
 });
 
+app.post("/login", function (req, res) {
+
+  const user= new User({
+      username:req.body.username,
+      password:req.body.password
+  })
+
+  req.login(user, function(error){
+      if(error){
+          console.log(error);
+          res.redirect("login")
+      }else{
+          passport.authenticate("local")(req, res, function () {
+              res.redirect("/main");
+            });
+      }
+  })
+
+});
+
+app.post("/main", function(req,res){
+  req.logout();
+  res.redirect('/');
+})
